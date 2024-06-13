@@ -31,6 +31,7 @@ const connected = async () => {
 };
 
 connected();
+
 // Funzione per resettare il database
 const preResetDB = async () => {
     try {
