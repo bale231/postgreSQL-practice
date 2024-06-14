@@ -77,6 +77,6 @@ const preResetDB = async () => {
     }
 };
 
-preResetDB();
+//preResetDB();
 
 export { db }
