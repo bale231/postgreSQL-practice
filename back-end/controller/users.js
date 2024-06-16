@@ -36,9 +36,9 @@ const register = async (req, res) => {
             VALUES($1, $2, $3, $4, $5)`,
             [username, email, hashedPassword, birth_date, role_id]
         );
-        res.status(201).json({ msg: "User registered successfully!!", user: { username, email, birth_date, role_id } });
+        res.status(201).json({ msg: `User ${username} registered successfully!!`, user: { username, email, birth_date, role_id } });
     } catch (error) {
-        res.status(500).json({ msg: "Error registering user", error: error.message });
+        res.status(500).json({ msg: "Username or email alredy Exists!", error: error.message });
     }
 }
 
@@ -49,7 +49,7 @@ const login = async (req, res) => {
         const user = await db.oneOrNone(`SELECT * FROM users WHERE email=$1`, email);
 
         if (!user) {
-            return res.status(404).json({ msg: "User not found!" });
+            return res.status(404).json({ msg: "User not found! register before login." });
         }
 
         const passwordMatch = await bcrypt.compare(password, user.password);

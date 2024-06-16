@@ -9,12 +9,20 @@ function useProfile() {
     if (userLocal) {
       setProfile({
         id: userLocal.id,
+        name: userLocal.name,
+        surname: userLocal.surname,
         email: userLocal.email,
+        username: userLocal.username,
+        profile_pic: userLocal.profile_pic,
       });
     } else if (userSession) {
       setProfile({
         id: userSession.id,
+        name: userSession.name,
+        surname: userSession.surname,
         email: userSession.email,
+        username: userSession.username,
+        profile_pic: userSession.profile_pic,
       });
     }
   };
